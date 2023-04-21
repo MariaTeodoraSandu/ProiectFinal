@@ -1,13 +1,13 @@
 package org.example;
 
-public class MagazinOnline {
+public class Produs {
 
     private String numeProdus;
     private double pret;
     private int cantitate;
     private double discount;
 
-    public MagazinOnline(String numeProdus, double pret, int cantitate, double discount) {
+    public Produs(String numeProdus, double pret, int cantitate, double discount) {
         this.numeProdus = numeProdus;
         this.pret = pret;
         this.cantitate = cantitate;

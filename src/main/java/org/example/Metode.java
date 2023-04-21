@@ -38,18 +38,23 @@ public class Metode {
     Map<String,Integer> produseComandate = new HashMap<>();
 
     public void operatii(){
-        System.out.print("\n");
-        System.out.println("Ati comandat urmatoarele produse: ");
-        afisezProduseComandate(produseComandate);
-        System.out.print("\n");
-        System.out.println("Suma de plata pentru comanda efectuata este: "+totalDePlataProduse(listaPreturiTotale));
-        if(verificSumaPentruCadou(totalDePlataProduse(listaPreturiTotale))){
-            System.out.println(cadou(nrRandom));
-        }
+        if(listaPreturiTotale.isEmpty()) {
+            System.out.println("Nu ati comandat nimic. Va multumim pentru vizita facuta in magazinul nostru!");
+        } else {
+            System.out.print("\n");
+            System.out.println("Ati comandat urmatoarele produse: ");
+            afisezProduseComandate(produseComandate);
+            System.out.print("\n");
+            System.out.println("Suma de plata pentru comanda efectuata este: " + totalDePlataProduse(listaPreturiTotale));
+            if (verificSumaPentruCadou(totalDePlataProduse(listaPreturiTotale))) {
+                System.out.println(cadou(nrRandom));
+            }
 
-        System.out.println(mesajLivrare(totalDePlataProduse(listaPreturiTotale)));
-        if(totalDePlataProduse(listaPreturiTotale) <150) {
-            System.out.println("Totalul de plata cu livrare este de: " + totalPlataCuLivrare(totalDePlataProduse(listaPreturiTotale)));
+            System.out.println(mesajLivrare(totalDePlataProduse(listaPreturiTotale)));
+            if (totalDePlataProduse(listaPreturiTotale) < 150) {
+                System.out.println("Totalul de plata cu livrare este de: " + totalPlataCuLivrare(totalDePlataProduse(listaPreturiTotale)));
+            }
+            System.out.println("Multumim pentru cumparaturile facute la noi!");
         }
     }
 
@@ -89,11 +94,12 @@ public class Metode {
         }
         System.out.print("Introduceti produsul dorit: ");
         String produs = scanner.nextLine();
-        System.out.print("Introduceti cantitatea: ");
-        int cantitateComandata = Integer.parseInt(scanner.nextLine());
-
-        for (HranaCopii element : listaHrana) {
+        int instanta = 0;
+        for(HranaCopii element : listaHrana) {
             if (produs.equalsIgnoreCase(element.getNumeProdus())) {
+                instanta++;
+                System.out.print("Introduceti cantitatea: ");
+                int cantitateComandata = Integer.parseInt(scanner.nextLine());
                 double pretFinal = cantitateComandata * element.getPret();
                 System.out.println("Pretul total este: " + pretFinal);
                 double pretCuDiscount = pretFinal - (element.getDiscount() / 100 * pretFinal);
@@ -102,6 +108,9 @@ public class Metode {
                 listaPreturiTotale.add(pretCuDiscount);
             }
         }
+            if(instanta == 0) {
+                System.out.println("Produsul tastat nu se afla in lista. Va rugam sa reluati operatiunea.");
+            }
     }
 
     public void dateJucarii(List<JucariiCopii> listaJucariiBebelusi, List<JucariiCopii> listaJucariiCopii){
@@ -113,12 +122,13 @@ public class Metode {
             }
             System.out.print("Introduceti numele jucariei: ");
             String nume = scanner.nextLine();
-            System.out.print("Introduceti cantitatea: ");
-            int cantitateProdus = Integer.parseInt(scanner.nextLine());
-
+            int instanta = 0;
             for(JucariiCopii element: listaJucariiBebelusi)
             {
                 if(nume.equalsIgnoreCase(element.getNumeProdus())){
+                    instanta ++;
+                    System.out.print("Introduceti cantitatea: ");
+                    int cantitateProdus = Integer.parseInt(scanner.nextLine());
                     double pretTotal = cantitateProdus * element.getPret();
                     System.out.println("Pretul total este: " + pretTotal);
                     double pretCuDiscount = pretTotal - (element.getDiscount()/100 * pretTotal);
@@ -126,6 +136,9 @@ public class Metode {
                     produseComandate.put(element.getNumeProdus(), cantitateProdus);
                     listaPreturiTotale.add(pretCuDiscount);
                 }
+            }
+            if (instanta == 0) {
+                System.out.println("Produsul tastat nu se afla in lista. Va rugam sa reluati operatiunea.");
             }
         } else if (y==2){
             for(JucariiCopii elem:listaJucariiCopii){
@@ -133,12 +146,13 @@ public class Metode {
             }
             System.out.print("Introduceti numele jucariei: ");
             String nume = scanner.nextLine();
-            System.out.print("Introduceti cantitatea: ");
-            int cantitateProdus = Integer.parseInt(scanner.nextLine());
-
+            int instanta = 0;
             for(JucariiCopii element: listaJucariiCopii)
             {
                 if(nume.equalsIgnoreCase(element.getNumeProdus())){
+                    instanta ++;
+                    System.out.print("Introduceti cantitatea: ");
+                    int cantitateProdus = Integer.parseInt(scanner.nextLine());
                     double pretTotal = cantitateProdus * element.getPret();
                     System.out.println("Pretul total este: " + pretTotal);
                     double pretCuDiscount = pretTotal - (element.getDiscount()/100 * pretTotal);
@@ -146,6 +160,9 @@ public class Metode {
                     produseComandate.put(element.getNumeProdus(), cantitateProdus);
                     listaPreturiTotale.add(pretCuDiscount);
                 }
+            }
+            if(instanta == 0) {
+                System.out.println("Produsul tastat nu se afla in lista. Va rugam sa reluati operatiunea.");
             }
         }
     }
@@ -157,12 +174,13 @@ public class Metode {
         }
         System.out.print("Introduceti numele produsului: ");
         String nume = scanner.nextLine();
-        System.out.print("Introduceti cantitatea: ");
-        int cantitate = Integer.parseInt(scanner.nextLine());
-
+        int instanta = 0;
         for(ImbracaminteCopii element: listaImbracaminte)
         {
             if(nume.equalsIgnoreCase(element.getNumeProdus())){
+                instanta ++;
+                System.out.print("Introduceti cantitatea: ");
+                int cantitate = Integer.parseInt(scanner.nextLine());
                 double pretTotal = cantitate* element.getPret();
                 System.out.println("Pretul total este: " + pretTotal);
                 double pretCuDiscount =pretTotal-(element.getDiscount()/100 * pretTotal);
@@ -170,6 +188,9 @@ public class Metode {
                 produseComandate.put(element.getNumeProdus(), cantitate);
                 listaPreturiTotale.add(pretCuDiscount);
             }
+        }
+        if(instanta == 0){
+            System.out.println("Produsul tastat nu se afla in lista. Va rugam sa reluati operatiunea.");
         }
     }
 

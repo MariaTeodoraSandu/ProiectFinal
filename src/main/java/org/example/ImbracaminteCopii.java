@@ -1,6 +1,6 @@
 package org.example;
 
-public class ImbracaminteCopii extends MagazinOnline {
+public class ImbracaminteCopii extends Produs {
     private String categorieImbracaminte;
 
     public ImbracaminteCopii(String numeProdus, double pret, int cantitate, double discount, String categorieImbracaminte) {

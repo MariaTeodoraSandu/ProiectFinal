@@ -1,7 +1,7 @@
 package org.example;
 
 
-public class HranaCopii extends MagazinOnline{
+public class HranaCopii extends Produs{
     private boolean bio;
     private String tipHrana;
 

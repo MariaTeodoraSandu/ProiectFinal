@@ -5,14 +5,13 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import static junit.framework.TestCase.*;
 
 public class MetodeTest {
 
     Metode metode;
-    Random random = new Random();
+
 
     @Before
     public void setup(){
@@ -21,14 +20,14 @@ public class MetodeTest {
 
     @Test
     public void testMesajLivrare() {
-        String str = metode.mesajLivrare(180);
+        String str = metode.mesajLivrare(180.00);
         assertEquals("Comanda este peste 150 lei, iar livrarea este gratuita",str);
 
     }
 
     @Test
     public void testMesajLivrare2(){
-        String str = metode.mesajLivrare(100);
+        String str = metode.mesajLivrare(100.00);
         assertEquals("La comenzi sub 150 de lei, costul de livrare este 10 lei",str);
     }
 

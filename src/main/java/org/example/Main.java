@@ -56,7 +56,6 @@ public class Main {
                 "2- Categoria Jucarii pentru copii \n" +
                 "3- Categoria Imbracaminte pentru copii");
 
-        List<Double> listaPreturiTotale= new ArrayList<>();
         while(true){
             System.out.print("Introduceti optiunea: ");
             int x= Integer.parseInt(scanner.nextLine());
@@ -75,9 +74,9 @@ public class Main {
                 metode.dateImbracaminte(listaImbracaminte);
                 break;
             default:
-                System.out.println("Ne pare rau, categoria tastata nu exista! ");
-                System.exit(0);
-        }
+                System.out.println("Ne pare rau, categoria tastata nu exista!" +
+                                                     "\n" +"Daca doriti iesirea din aplicatie, apasati tasta 0" );
+            }
        }
     }
 
